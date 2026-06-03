@@ -254,14 +254,14 @@
     </div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
       <span id="dayCounter" class="badge blue hidden"></span>
-      <button class="pill" onclick="logout()">[ LOGOUT ]</button>
+      
     </div>
   </div>
 
   <!-- ═══════════════════════════════ LOGIN ═══════════════════════════════ -->
   <section id="loginPage" class="login-layout">
     <div class="card login-card">
-      <div class="hero-emoji">[ LOGIN_PORTAL ]</div>
+      <div class="hero-emoji" id="loginQuote" style="font-size: 16px; font-style: italic; white-space: normal; padding: 0 10px; line-height: 1.5; color: var(--primary-color); font-weight: 600;"></div>
       <h2>AUTHENTICATION REQUIRED</h2>
       <p class="subtitle">Akses sistem pemantauan kesehatan harian. Isi data dengan valid.</p>
 
@@ -292,19 +292,19 @@
           <label for="consentCheck">Saya memahami dan setuju mengisi data dengan jujur.</label>
         </div>
 
-        <button class="btn primary full" style="margin-top:12px;" onclick="studentLogin()">CONNECT AS STUDENT</button>
+        <button class="btn primary full" style="margin-top:12px;" onclick="studentLogin()">LOGIN AS STUDENT</button>
       </div>
 
       <div id="teacherLoginBox" class="hidden">
         <label for="teacherCode">Kode Akses Guru</label>
         <input id="teacherCode" type="password" placeholder="Enter override code" />
-        <button class="btn primary full" style="margin-top:12px;" onclick="teacherLogin()">INITIATE DASHBOARD</button>
+        <button class="btn primary full" style="margin-top:12px;" onclick="teacherLogin()">LOGIN AS ADMIN</button>
         <p class="small">Dashboard guru dilindungi enskripsi agar data siswa tetap aman.</p>
       </div>
 
       <div id="loginMessage"></div>
 
-      <div class="quote" style="margin-top:16px;">> "Sehat hari ini, hebat esok hari."</div>
+      <div class="quote" style="margin-top:16px;">> "Sehat hari ini, hebat esok hari."</div><button class="btn primary full" onclick="logout()" style="margin-top: 15px; background: #e74c3c; color: white; border: none; font-weight: bold; border-radius: 12px; height: 50px;">[ LOGOUT ]</button>
     </div>
   </section>
 
@@ -625,7 +625,7 @@
 <!-- ═══════════════════════════ JAVASCRIPT ═══════════════════════════ -->
 <script>
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
-const TEACHER_CODE = "GURU2024";
+const TEACHER_CODE = "ESNESABA123OKE";
 const PROGRAM_START = "2025-01-06"; // Ganti sesuai tanggal program dimulai
 
 const HABITS = [
@@ -1336,7 +1336,7 @@ function showGuide(role) {
         <li><strong>SISWA HANYA BISA MENGISI CEKLIST INI SEHARI SEKALI. DATA YANG SUDAH TERKIRIM TIDAK BISA DI EDIT.</strong></li>
         <li>Pantau <strong>HISTORI 7 HARI</strong> untuk evaluasi kemajuan.</li>
       </ul>
-      <div class="notice">Data ini bersifat konfidensial untuk monitoring kesehatan internal.</div>
+      <div class="notice">Data ini bersifat konfidensial untuk monitoring kesehatan internal.</div><button class="btn primary full" onclick="logout()" style="margin-top: 15px; background: #e74c3c; color: white; border: none; font-weight: bold; border-radius: 12px; height: 50px;">[ LOGOUT ]</button>
     `;
   } else {
     document.getElementById("guideIcon").textContent = "SYS.ADMIN";
@@ -1344,7 +1344,7 @@ function showGuide(role) {
     document.getElementById("guideBody").innerHTML = `
       <p>Dashboard untuk administrasi data program 30 Hari Hidup Sehat.</p>
       <ul>
-        <li>Kode akses: <strong>GURU2024</strong>.</li>
+        <li>Kode akses: <strong>ESNESABA123OKE</strong>.</li>
         <li>Gunakan <strong>DATA FILTER</strong> (Tanggal & Kelas) untuk melihat statistik parsial.</li>
         <li>Grafik menampilkan tren log 7 hari ke belakang.</li>
         <li>Sistem akan menyusun rekomendasi otomatis pada kolom <strong>ANALISIS KEBIASAAN</strong>.</li>
@@ -1384,7 +1384,25 @@ function exportPDF() {
       </head>
       <body>
         ${element.innerHTML}
-      </body>
+      <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const INDO_QUOTES = [
+    "Sehat hari ini, hebat esok hari.",
+    "Satu langkah kecil hari ini, satu lompatan besar ke depan.",
+    "Kebiasaan sehat dimulai dari pilihan kecil setiap hari.",
+    "Kamu lebih kuat dari alasanmu untuk menyerah.",
+    "Tubuh sehat, pikiran jernih, performa maksimal.",
+    "Konsistensi adalah kunci keberhasilan.",
+    "Jangan tunggu sakit untuk mulai hidup sehat.",
+    "Kesehatan adalah investasi terbaik masa depanmu."
+  ];
+  const loginQuoteEl = document.getElementById("loginQuote");
+  if (loginQuoteEl) {
+    loginQuoteEl.textContent = '"' + INDO_QUOTES[Math.floor(Math.random() * INDO_QUOTES.length)] + '"';
+  }
+});
+</script>
+</body>
     </html>
   `;
 
@@ -1435,7 +1453,25 @@ function exportWord() {
     flexboxSig.outerHTML = sigHtml;
   }
 
-  const postHtml = "</body></html>";
+  const postHtml = "<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const INDO_QUOTES = [
+    "Sehat hari ini, hebat esok hari.",
+    "Satu langkah kecil hari ini, satu lompatan besar ke depan.",
+    "Kebiasaan sehat dimulai dari pilihan kecil setiap hari.",
+    "Kamu lebih kuat dari alasanmu untuk menyerah.",
+    "Tubuh sehat, pikiran jernih, performa maksimal.",
+    "Konsistensi adalah kunci keberhasilan.",
+    "Jangan tunggu sakit untuk mulai hidup sehat.",
+    "Kesehatan adalah investasi terbaik masa depanmu."
+  ];
+  const loginQuoteEl = document.getElementById("loginQuote");
+  if (loginQuoteEl) {
+    loginQuoteEl.textContent = '"' + INDO_QUOTES[Math.floor(Math.random() * INDO_QUOTES.length)] + '"';
+  }
+});
+</script>
+</body></html>";
   const html = preHtml + element.innerHTML + postHtml;
   
   const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
@@ -1542,7 +1578,29 @@ initNutrifoodRain();
   PROVIDE APPS BY FENDI AKHMAD,S.Pd <br>
   @2026 SMP NEGERI 1 BANYUBIRU
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const INDO_QUOTES = [
+    "Sehat hari ini, hebat esok hari.",
+    "Satu langkah kecil hari ini, satu lompatan besar ke depan.",
+    "Kebiasaan sehat dimulai dari pilihan kecil setiap hari.",
+    "Kamu lebih kuat dari alasanmu untuk menyerah.",
+    "Tubuh sehat, pikiran jernih, performa maksimal.",
+    "Konsistensi adalah kunci keberhasilan.",
+    "Jangan tunggu sakit untuk mulai hidup sehat.",
+    "Kesehatan adalah investasi terbaik masa depanmu."
+  ];
+  const loginQuoteEl = document.getElementById("loginQuote");
+  if (loginQuoteEl) {
+    loginQuoteEl.textContent = '"' + INDO_QUOTES[Math.floor(Math.random() * INDO_QUOTES.length)] + '"';
+  }
+});
+</script>
 </body>
 </html>
+
+
+
+
 
 
