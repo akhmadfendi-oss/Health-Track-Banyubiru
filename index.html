@@ -246,8 +246,8 @@
     <div class="brand">
       <img src="logo.png" alt="Logo Sekolah" class="school-logo" />
       <div>
-        <h1>Health Track Esnesaba</h1>
-        <p>Program 30 Hari Hidup Sehat Bersama • SMP Esnesaba</p>
+        <h1>Program 30 Hari Hidup Sehat Bersama</h1>
+        <p>• SMP NEGERI 1 BANYUBIRU •</p>
       </div>
     </div>
     <div style="display:flex;gap:8px;align-items:center;">
@@ -326,6 +326,7 @@
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <button class="btn light" onclick="checkTodayStatus()">📋 Cek Data Saya</button>
         <button class="btn warning" onclick="showGuide('student')">📖 Panduan User</button>
+        <button class="btn danger" onclick="logout()">KEMBALI KE MENU UTAMA</button>
       </div>
     </div>
 
@@ -414,6 +415,7 @@
         <button class="btn warning" onclick="showGuide('teacher')">📖 Panduan Admin</button>
         <button class="btn purple" onclick="showReportPage()">📄 Laporan NPET</button>
         <button class="btn light" onclick="resetAllData()">🗑️ Reset Data</button>
+        <button class="btn danger" onclick="logout()">KEMBALI KE MENU UTAMA</button>
       </div>
     </div>
 
@@ -1522,7 +1524,7 @@ function handleSaveAs() {
   } else if (val === "word") {
     const htmlBody = getFormalReportHTML();
     const content = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Laporan NPET</title></head><body>" + htmlBody + "</body></html>";
-    const blob = new Blob(['\\ufeff', content], { type: 'application/msword' });
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), content], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
