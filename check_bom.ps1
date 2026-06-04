@@ -1,0 +1,5 @@
+$bytes = [System.IO.File]::ReadAllBytes("d:\HEALTHTRACKESNESABA\index.html")
+Write-Host ("Byte 0: " + $bytes[0])
+Write-Host ("Byte 1: " + $bytes[1])
+Write-Host ("Byte 2: " + $bytes[2])
+Write-Host ("Total: " + $bytes.Length)
